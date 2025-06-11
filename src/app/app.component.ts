@@ -1,14 +1,14 @@
 
 import { Component, inject, OnInit } from '@angular/core';
-import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component';
 import { CommonModule } from '@angular/common';
 
 import { Dessert } from './core/models/dessert.model';
 import { DessertService } from './services/dessert.service';
+import { DessertItemComponent } from './components/dessert-item/dessert-item.component';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule],
+  imports: [CommonModule, DessertItemComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

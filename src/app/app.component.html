@@ -2,8 +2,11 @@
   <section class="desserts">
     <h1>Desserts</h1>
 
-    <div class="desserts-container" *ngFor="let desert of desserts">
-      <p>{{ desert?.name }}</p>
+    <div class="desserts-container">
+      <app-dessert-item
+        *ngFor="let dessert of desserts"
+        [dessert]="dessert"
+      ></app-dessert-item>
     </div>
   </section>
 
