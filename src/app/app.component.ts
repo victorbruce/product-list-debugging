@@ -5,10 +5,10 @@ import { CommonModule } from '@angular/common';
 import { Dessert } from './core/models/dessert.model';
 import { DessertService } from './services/dessert.service';
 import { DessertItemComponent } from './components/dessert-item/dessert-item.component';
-
+import { CartComponent } from './components/cart/cart.component';
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, DessertItemComponent],
+  imports: [CommonModule, DessertItemComponent,CartComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
