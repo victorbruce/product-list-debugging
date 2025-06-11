@@ -1,3 +1,4 @@
+
 import { Component, inject, OnInit } from '@angular/core';
 import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component';
 import { CommonModule } from '@angular/common';
@@ -24,3 +25,4 @@ export class AppComponent implements OnInit {
     });
   }
 }
+
