@@ -2,7 +2,7 @@
 
 A product list app built with Angular
 
-Live URL: []()
+Live URL: [https://vb-product-list-debugging.netlify.app/](https://vb-product-list-debugging.netlify.app/)
 
 ## 📌 Table of Contents
 
@@ -89,7 +89,6 @@ ng test
 ### 1. Bug Fixes
 
 Approached the project by first resolving bugs and other gliches that affects the app from running and behaving as expected.
-
 
 ## 🚀 Deployment
 

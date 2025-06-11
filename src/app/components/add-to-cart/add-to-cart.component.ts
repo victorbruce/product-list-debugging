@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-add-to-cart',
   templateUrl: './add-to-cart.component.html',
-  styleUrl: './add-to-cart.component.scss'
+  styleUrl: './add-to-cart.component.scss',
 })
 export class AddToCartComponent {
   isAddedToCart = false;
@@ -14,14 +14,15 @@ export class AddToCartComponent {
   }
 
   decreaseProductItem() {
-    if (this.quantity < 1) {
+    if (this.quantity <= 1) {
       this.isAddedToCart = false;
+      this.quantity = 1;
+    } else {
+      this.quantity--;
     }
-    this.quantity--;
   }
 
   increaseProductItem() {
     ++this.quantity;
   }
-
-};
+}
