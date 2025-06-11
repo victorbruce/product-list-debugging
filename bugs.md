@@ -61,3 +61,23 @@
 ```
 
 ## Bug ID: 003
+
+**TITLE:** Product Quantity decreases beyound 1
+
+**DESCRIPTION:**
+
+> When an item is added to the cart, the quantity can be decreased beyound 1
+
+**LOGS / CONSOLE OUTPUT:**
+
+**SOLUTION:**
+
+- update the if statement logic to ensure that quantity is always `<= 1` and not `< 1`
+
+- Reassign `this.quantity = 1` when quantity value is `<= 1`
+
+- Else, we `decrease quantity`
+
+
+
+
