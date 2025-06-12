@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { Dessert } from '../core/models/dessert.model';
 
 @Injectable({
@@ -11,6 +11,12 @@ export class CartService {
   >([]);
 
   cartItems$ = this.cartItemsSubject.asObservable();
+  
+  readonly cartTotal$ = this.cartItems$.pipe(
+    map((items) =>
+      items.reduce((sum, item) => sum + item.price * (item.quantity ?? 0), 0)
+    )
+  );
 
   constructor() {
     this.getCartItems();
@@ -18,6 +24,20 @@ export class CartService {
 
   getCartItems() {
     return this.cartItems$;
+  }
+
+  getQuantityForItem(dessert: Dessert): number {
+    const item = this.cartItemsSubject.value.find(
+      (i) => i.name === dessert.name
+    );
+    return item?.quantity ?? 0;
+  }
+
+  getItemTotal(dessert: Dessert): number {
+    const item = this.cartItemsSubject.value.find(
+      (i) => i.name === dessert.name
+    );
+    return item ? item.price * (item.quantity ?? 0) : 0;
   }
 
   addItemToCart(dessert: Dessert) {
@@ -47,13 +67,6 @@ export class CartService {
       currentItems.splice(index, 1);
       this.cartItemsSubject.next(currentItems);
     }
-  }
-
-  getQuantityForItem(dessert: Dessert): number {
-    const item = this.cartItemsSubject.value.find(
-      (i) => i.name === dessert.name
-    );
-    return item?.quantity ?? 0;
   }
 
   increaseQuantity(dessert: Dessert): void {
