@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Dessert } from '../../core/models/dessert.model';
 
 @Component({
   selector: 'app-add-to-cart',
@@ -8,9 +9,12 @@ import { Component } from '@angular/core';
 export class AddToCartComponent {
   isAddedToCart = false;
   quantity = 1;
+  @Input() dessert!: Dessert;
+  @Output() dessertSelected = new EventEmitter<Dessert>();
 
   addToCart() {
     this.isAddedToCart = true;
+    this.dessertSelected.emit(this.dessert);
   }
 
   decreaseProductItem() {
