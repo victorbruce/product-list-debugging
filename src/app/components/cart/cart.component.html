@@ -3,8 +3,12 @@
   <div class="content">
     @if(cartItems.length > 0) {
     <div class="" *ngFor="let item of cartItems">
-      <span>{{ item.name }}</span>
-      <button (click)="removeItemFromCart(item)">x</button>
+      <div>
+        <span>{{ item.name }} &nbsp;</span>
+        <span>{{ item?.quantity }} &nbsp;</span>
+        <span>{{ item.price }} &nbsp;</span>
+        <button (click)="removeItemFromCart(item)">delete</button>
+      </div>
     </div>
     } @else {
     <div class="empty-cart-content">
