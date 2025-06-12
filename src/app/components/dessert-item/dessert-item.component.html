@@ -1,7 +1,7 @@
 <div class="dessert-item">
   <section class="item-image-add-to-cart">
     <img src="{{ dessert.image.thumbnail }}" alt="{{ dessert.name }}" />
-    <app-add-to-cart (dessertSelected)="onAddToCart($event)" [dessert]="dessert" />
+    <app-add-to-cart [dessert]="dessert" />
   </section>
   <section class="item-info">
     <p class="category">{{ dessert.category }}</p>

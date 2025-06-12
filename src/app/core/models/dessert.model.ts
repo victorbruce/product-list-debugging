@@ -3,6 +3,7 @@ export interface Dessert {
   name: string;
   category: string;
   price: number;
+  quantity?: number;
 }
 
 export interface DessertImages {
