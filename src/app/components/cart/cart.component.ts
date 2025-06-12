@@ -11,6 +11,7 @@ import { CartService } from '../../services/cart.service';
 export class CartComponent implements OnInit {
   cartItems: Dessert[] = [];
   private cartService: CartService = inject(CartService);
+  cartTotal$ = this.cartService.cartTotal$;
 
   ngOnInit(): void {
     this.getCartItems();
@@ -23,5 +24,9 @@ export class CartComponent implements OnInit {
   }
   removeItemFromCart(item: Dessert) {
     this.cartService.removeItemFromCart(item);
+  }
+
+  getItemTotal(item: Dessert) {
+    return this.cartService.getItemTotal(item);
   }
 }

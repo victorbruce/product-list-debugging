@@ -5,11 +5,15 @@
     <div class="" *ngFor="let item of cartItems">
       <div>
         <span>{{ item.name }} &nbsp;</span>
-        <span>{{ item?.quantity }} &nbsp;</span>
-        <span>{{ item.price }} &nbsp;</span>
+        <span>qty: {{ item?.quantity }} &nbsp;</span>
+        <span
+          >price:{{ item.price }} &nbsp; total: {{ getItemTotal(item) }}</span
+        >
         <button (click)="removeItemFromCart(item)">delete</button>
       </div>
     </div>
+    <div>Total: {{ cartTotal$ | async }}</div>
+
     } @else {
     <div class="empty-cart-content">
       <img src="images/illustration-empty-cart.svg" alt="empty cart svg" />

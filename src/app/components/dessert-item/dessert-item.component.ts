@@ -1,7 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 import { Dessert } from '../../core/models/dessert.model';
-
 @Component({
   selector: 'app-dessert-item',
   imports: [AddToCartComponent],
