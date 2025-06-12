@@ -12,9 +12,22 @@ export class CartComponent implements OnInit {
   cartItems: Dessert[] = [];
   private cartService: CartService = inject(CartService);
   cartTotal$ = this.cartService.cartTotal$;
+  isModalOpen = false;
 
   ngOnInit(): void {
     this.getCartItems();
+  }
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  confirmOrder() {
+    this.closeModal();
+    alert('Order confirmed!');
   }
 
   getCartItems() {

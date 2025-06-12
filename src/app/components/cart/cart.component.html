@@ -13,6 +13,31 @@
       </div>
     </div>
     <div>Total: {{ cartTotal$ | async }}</div>
+    <button (click)="openModal()">Confirm Order</button>
+    <div class="modal-overlay" *ngIf="isModalOpen">
+      <div class="modal">
+        <h3>Confirm Your Order</h3>
+        <div class="modal-content">
+          <div *ngFor="let item of cartItems">
+            <p>
+              <strong>{{ item.name }}</strong
+              ><br />
+              Quantity: {{ item.quantity }}<br />
+              Price: {{ item.price | currency }}<br />
+              Total: {{ getItemTotal(item) | currency }}
+            </p>
+          </div>
+          <hr />
+          <p class="modal-total">
+            Cart Total: {{ cartTotal$ | async | currency }}
+          </p>
+        </div>
+        <div class="modal-actions">
+          <button (click)="confirmOrder()">Confirm</button>
+          <button (click)="closeModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
 
     } @else {
     <div class="empty-cart-content">
