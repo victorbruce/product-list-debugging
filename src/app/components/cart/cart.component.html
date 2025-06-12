@@ -1,9 +1,16 @@
 <section class="cart">
-  <h2>Your Cart (0)</h2>
+  <h2>Your Cart ({{ cartItems.length }})</h2>
   <div class="content">
+    @if(cartItems.length > 0) {
+    <div class="" *ngFor="let item of cartItems">
+      <span>{{ item.name }}</span>
+      <button (click)="removeItemFromCart(item)">x</button>
+    </div>
+    } @else {
     <div class="empty-cart-content">
       <img src="images/illustration-empty-cart.svg" alt="empty cart svg" />
       <p class="empty-cart-description">Your added items will appear here</p>
     </div>
+    }
   </div>
 </section>
