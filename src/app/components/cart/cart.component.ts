@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { Dessert } from '../../core/models/dessert.model';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe} from '@angular/common';
 import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-cart',
-  imports: [CommonModule],
+  imports: [CommonModule, CurrencyPipe],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })
