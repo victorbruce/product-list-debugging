@@ -5,7 +5,8 @@
 .cart {
   width: 100%;
 
-  @include respond-above($breakpoint-sm) {
+  @include respond-above($breakpoint-lg) {
+    width: inherit;
     max-width: 327px;
   }
 
