@@ -9,8 +9,13 @@ main {
   max-width: 1216px;
   margin: auto;
   padding: 1.5rem;
-
   @include myflex(column, center, center, 2rem);
+
+  @include respond-above($breakpoint-lg) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: flex-start;
+  }
 }
 
 .desserts {
@@ -30,6 +35,11 @@ main {
 
   & .dessert-wrapper {
     width: 100%;
+  }
+
+  @include respond-above($breakpoint-sm) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
