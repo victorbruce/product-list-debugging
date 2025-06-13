@@ -1,6 +1,20 @@
 <div class="dessert-item">
   <section class="item-image-add-to-cart">
-    <img src="{{ dessert.image.thumbnail }}" alt="{{ dessert.name }}" />
+    <img
+      *ngIf="isMobile; else tabletScreen"
+      src="{{ dessert.image.mobile }}"
+      alt="{{ dessert.name }}"
+    />
+
+    <ng-template #tabletScreen>
+      <ng-container *ngIf="isTablet; else biggerScreen">
+        <img src="{{ dessert.image.tablet }}" alt="{{ dessert.name }}" />
+      </ng-container>
+    </ng-template>
+
+    <ng-template #biggerScreen>
+      <img src="{{ dessert.image.desktop }}" alt="{{ dessert.name }}" />
+    </ng-template>
     <app-add-to-cart [dessert]="dessert" />
   </section>
   <section class="item-info">
