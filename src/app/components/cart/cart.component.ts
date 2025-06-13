@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { Dessert } from '../../core/models/dessert.model';
-import { CommonModule, CurrencyPipe} from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-cart',
@@ -28,6 +28,7 @@ export class CartComponent implements OnInit {
   confirmOrder() {
     this.closeModal();
     alert('Order confirmed!');
+    this.cartService.clearCart();
   }
 
   getCartItems() {
