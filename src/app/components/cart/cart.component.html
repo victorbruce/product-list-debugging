@@ -26,27 +26,50 @@
     </div>
 
     <button class="confirm-order" (click)="openModal()">Confirm Order</button>
-    <div class="modal-overlay" *ngIf="isModalOpen">
+
+    <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()">
       <div class="modal">
-        <h3>Confirm Your Order</h3>
+        <div class="modal-header">
+          <img
+            src="images/icon-order-confirmed.svg"
+            alt="check icon"
+            aria-hidden="true"
+          />
+          <div>
+            <h2>Order Confirmed</h2>
+            <p>We hope you enjoy your food</p>
+          </div>
+        </div>
         <div class="modal-content">
           <div *ngFor="let item of cartItems">
-            <p>
-              <strong>{{ item.name }}</strong
-              ><br />
-              Quantity: {{ item.quantity }}<br />
-              Price: {{ item.price | currency }}<br />
-              Total: {{ getItemTotal(item) | currency }}
-            </p>
+            <div class="product">
+              <div class="product-info">
+                <img
+                  class="product-thumbnail"
+                  src="{{ item.image.thumbnail }}"
+                  alt="{{ item.name }}"
+                />
+                <div class="column">
+                  <p class="product-name">{{ item.name }}</p>
+                  <div class="product-cost">
+                    <p class="product-quantity">{{ item.quantity }}x</p>
+                    <p class="product-price">
+                      &#64;{{ item.price | currency }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="product-total">{{ getItemTotal(item) | currency }}</p>
+            </div>
           </div>
-          <hr />
-          <p class="modal-total">
-            Cart Total: {{ cartTotal$ | async | currency }}
-          </p>
+
+          <div class="modal-total">
+            <p class="order-total">Order Total</p>
+            <p class="order-total-price">{{ cartTotal$ | async | currency }}</p>
+          </div>
         </div>
         <div class="modal-actions">
-          <button (click)="confirmOrder()">Confirm</button>
-          <button (click)="closeModal()">Cancel</button>
+          <button (click)="confirmOrder()">Start New Order</button>
         </div>
       </div>
     </div>
