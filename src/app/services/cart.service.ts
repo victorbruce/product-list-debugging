@@ -11,7 +11,7 @@ export class CartService {
   >([]);
 
   cartItems$ = this.cartItemsSubject.asObservable();
-  
+
   readonly cartTotal$ = this.cartItems$.pipe(
     map((items) =>
       items.reduce((sum, item) => sum + item.price * (item.quantity ?? 0), 0)
@@ -99,5 +99,9 @@ export class CartService {
 
       this.cartItemsSubject.next(currentItems);
     }
+  }
+
+  clearCart(): void {
+    this.cartItemsSubject.next([]);
   }
 }
