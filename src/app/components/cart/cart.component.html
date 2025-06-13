@@ -2,18 +2,30 @@
   <h2>Your Cart ({{ cartItems.length }})</h2>
   <div class="content">
     @if(cartItems.length > 0) {
-    <div class="" *ngFor="let item of cartItems">
+    <div class="content-item" *ngFor="let item of cartItems">
       <div>
-        <span>{{ item.name }} &nbsp;</span>
-        <span>qty: {{ item?.quantity }} &nbsp;</span>
-        <span
-          >price:{{ item.price }} &nbsp; total: {{ getItemTotal(item) }}</span
-        >
-        <button (click)="removeItemFromCart(item)">delete</button>
+        <p class="name">{{ item.name }} &nbsp;</p>
+        <div class="item-row">
+          <p class="quantity">{{ item.quantity }}x</p>
+          <p class="price">&#64;{{ item.price | currency }}</p>
+          <p class="total-price">{{ getItemTotal(item) | currency }}</p>
+        </div>
       </div>
+      <button (click)="removeItemFromCart(item)">
+        <img src="images/icon-remove-item.svg" alt="remove icon" />
+      </button>
     </div>
-    <div>Total: {{ cartTotal$ | async }}</div>
-    <button (click)="openModal()">Confirm Order</button>
+    <div class="cart-total">
+      <p>Order Total</p>
+      <p class="order-total">{{ cartTotal$ | async | currency }}</p>
+    </div>
+
+    <div class="delivery-info">
+      <img src="images/icon-carbon-neutral.svg" alt="carbon neutral" />
+      <p>This is a <span>carbon neutral</span> delivery</p>
+    </div>
+
+    <button class="confirm-order" (click)="openModal()">Confirm Order</button>
     <div class="modal-overlay" *ngIf="isModalOpen">
       <div class="modal">
         <h3>Confirm Your Order</h3>
@@ -38,7 +50,6 @@
         </div>
       </div>
     </div>
-
     } @else {
     <div class="empty-cart-content">
       <img src="images/illustration-empty-cart.svg" alt="empty cart svg" />

@@ -6,9 +6,10 @@
       <app-dessert-item
         *ngFor="let dessert of desserts"
         [dessert]="dessert"
+        class="dessert-wrapper"
       ></app-dessert-item>
     </div>
   </section>
 
-  <app-cart></app-cart>
+  <app-cart class="cart-wrapper"></app-cart>
 </main>

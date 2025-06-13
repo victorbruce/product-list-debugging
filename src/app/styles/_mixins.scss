@@ -1,7 +1,14 @@
+@use "variables" as *;
 
-@use 'variables' as *;
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
 
-@mixin flex($direction:row, $justify:flex-start, $align:stretch, $gap:0) {
+@mixin myflex($direction: row, $justify: flex-start, $align: stretch, $gap: 0) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
@@ -27,10 +34,23 @@
 @mixin TextPreset4 {
   font-size: 14px;
   line-height: 150%;
-  font-family: $font-regular
+  font-family: $font-regular;
 }
 @mixin TextPreset4Bold {
   font-size: 14px;
   line-height: 150%;
   font-family: $font-semibold;
+}
+
+// responsive media query
+@mixin respond-above($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin respond-below($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
 }
