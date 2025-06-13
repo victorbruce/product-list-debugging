@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 import { Dessert } from '../../core/models/dessert.model';
 import { CommonModule, CurrencyPipe } from '@angular/common';
@@ -10,4 +10,18 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 })
 export class DessertItemComponent {
   @Input() dessert!: Dessert;
+  isMobile = false;
+  isTablet = false;
+  isDesktop = false;
+
+  @HostListener('window:resize', [])
+  onResize(): void {
+    this.updateDeviceType();
+  }
+
+  private updateDeviceType(): void {
+    this.isMobile = window.innerWidth <= 768;
+    this.isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+    this.isDesktop = window.innerWidth > 1024;
+  }
 }
