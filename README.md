@@ -84,11 +84,29 @@ ng test
 
 ## 📸 Screenshots
 
+![product list](./screenshots/product-list.png)
+
 ## 📋 Approach
+
+My approach going into designing and executing this project was heavily based on: **data flow**, **component architecture**, and **component communication**
 
 ### 1. Bug Fixes
 
-Approached the project by first resolving bugs and other gliches that affects the app from running and behaving as expected.
+Approached the project by first resolving bugs and other gliches that affected the app from running and behaving as expected.
+
+### 2. Data Flow, Component architecture, and communication
+
+![](./screenshots/high-level-data-flow.png)
+
+Mapped out **how data will flow** from one component to the other.
+
+After breaking the initial codebase into smaller reusable components, I realised that using **Input** decorators to accept data from parent compnents and **Output** decorators to emit values from child to parent components wouldn't scale very much. Hence, I opted for the second option which was **Services**.
+
+I decided to create services and inject them into components that needs them using **dependency injection** rather than passing data all the way from the parent or child to components that needed them. This made by codebase clean and I knew exactly where to go to get the needed data from to inject into components.
+
+### 3. Styling
+
+The next step was to fix any UI issues in terms of responsiveness, imagery sharpness,etc. 
 
 ## 🚀 Deployment
 
